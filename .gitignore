@@ -68,6 +68,9 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 
-# Ignore master key for decrypting credentials and more.
+# Ignore master key for decrypting credentials and more as well as database config file.
 /config/master.key
-/config/database.yml
+# /config/database.yml
+
+# Ignore node_module files 
+/node_module
