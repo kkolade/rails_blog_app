@@ -1,6 +1,5 @@
 require_relative '../rails_helper'
 
-
 RSpec.describe Post, type: :model do
   describe 'associations' do
     it { should belong_to(:author).class_name('User').with_foreign_key('author_id') }
@@ -17,26 +16,25 @@ RSpec.describe Post, type: :model do
 
   describe '#update_posts_counter' do
     let!(:author) { User.create(name: 'John Doe') }
-    let(:post) { Post.new(title: 'Test Post', author: author) }
-  
+    let(:post) { Post.new(title: 'Test Post', author:) }
+
     it 'updates the author\'s posts_counter' do
-      expect {
+      expect do
         post.save # Save the post object
         post.update_posts_counter
-      }.to change { post.author.post_counter }.from(0).to(1)
+      end.to change { post.author.post_counter }.from(0).to(1)
     end
   end
-  
 
   let(:author) { User.create(name: 'John Doe') }
-  let!(:post) { Post.create(title: 'Test Post', author: author) }
+  let!(:post) { Post.create(title: 'Test Post', author:) }
 
   describe '#last_five_comments' do
-    let!(:comment1) { Comment.new(post_id: post.id, author: author, created_at: 5.days.ago) }
-    let!(:comment2) { Comment.new(post_id: post.id, author: author, created_at: 3.days.ago) }
-    let!(:comment3) { Comment.new(post_id: post.id, author: author, created_at: 1.day.ago) }
-    let!(:comment4) { Comment.new(post_id: post.id, author: author, created_at: 2.days.ago) }
-    let!(:comment5) { Comment.new(post_id: post.id, author: author, created_at: 4.days.ago) }
+    let!(:comment1) { Comment.new(post_id: post.id, author:, created_at: 5.days.ago) }
+    let!(:comment2) { Comment.new(post_id: post.id, author:, created_at: 3.days.ago) }
+    let!(:comment3) { Comment.new(post_id: post.id, author:, created_at: 1.day.ago) }
+    let!(:comment4) { Comment.new(post_id: post.id, author:, created_at: 2.days.ago) }
+    let!(:comment5) { Comment.new(post_id: post.id, author:, created_at: 4.days.ago) }
 
     before do
       comment1.save!
@@ -54,4 +52,3 @@ RSpec.describe Post, type: :model do
     end
   end
 end
-

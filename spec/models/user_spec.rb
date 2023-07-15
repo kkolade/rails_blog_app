@@ -34,7 +34,5 @@ RSpec.describe User, type: :model do
         expect(last_three_posts).to eq([])
       end
     end
-
-
   end
 end
