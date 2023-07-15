@@ -236,7 +236,7 @@ DEPENDENCIES
   rails (~> 7.0.6)
   rspec-rails
   rubocop (>= 1.0, < 2.0)
-  shoulda-matchers (~> 5.0)
+  shoulda-matchers
   sprockets-rails
   stimulus-rails
   turbo-rails
