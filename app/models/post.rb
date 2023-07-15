@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
+  attribute :comments_counter
+
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
-  has_many :comments, dependent: :delete_all
+  has_many :comments, dependent: :delete_all, counter_cache: :comment_counter
   has_many :likes, dependent: :delete_all
 
   validates :title, presence: true, length: { maximum: 250 }
