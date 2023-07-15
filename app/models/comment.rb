@@ -3,6 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   def update_comment_counter
-    author.update_attribute('comment_counter', author.comments.count)
+    post.update(comments_counter: post.comments.count)
   end
 end
