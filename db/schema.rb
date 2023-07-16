@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_165751) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_233135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_165751) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -29,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_165751) do
     t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_likes_on_author_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -37,10 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_165751) do
     t.bigint "author_id", null: false
     t.string "title"
     t.text "text"
-    t.integer "comment_counter", default: 0
     t.integer "like_counter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_counter"
+    t.integer "comments_count", default: 0, null: false
+    t.integer "comment_counter", default: 0, null: false
     t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
@@ -55,7 +61,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_165751) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "likes", "users", column: "author_id"
   add_foreign_key "posts", "users", column: "author_id"
 end
