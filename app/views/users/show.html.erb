@@ -1,1 +1,37 @@
-<h1>Show details for a given user</h1>
+<div class="container">
+  <div class="user-container">
+    <div class = "user-photo">
+    <% if @user.photo.present? %>
+      <%= image_tag @user.photo, alt: "User Photo"%>
+    <% else %>
+      <span>No photo</span>
+    <% end %>
+    </div>
+    <div class="user-details">
+      <h2 class="user-name"><%= @user.name %></h2>
+      <p class="user-post-count">Number of posts: <%= @user.post_counter %></p>
+    </div>
+  </div>
+
+  <div class="user-bio">
+    <h4>Bio</h4>
+    <p><%= @user.bio %></p>
+  </div>
+
+  <ul>
+    <% @user.posts.limit(3).each do |post| %>
+      <li>
+        <div class="post">
+          <h4><%= post.title %></h4>
+          <p><%= post.text %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <div >
+    <%= link_to user_posts_path(@user) do %>
+      <span>See all posts</span>
+    <% end %>
+  </div>
+</div>
