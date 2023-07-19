@@ -14,7 +14,7 @@
  *= require_self
  */
 
- * {
+* {
   box-sizing: border-box;
   font-family: sans-serif;
 }
@@ -67,4 +67,3 @@ a {
   padding: 10px;
   margin-bottom: 20px;
 }
-
