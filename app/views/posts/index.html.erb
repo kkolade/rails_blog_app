@@ -1,1 +1,37 @@
-<h1>Here is a list of all posts for a specific user</h1>
+<div class="container">
+  <div class="user-container">
+  <div class=""user-photo>
+    <% if @user.photo.present? %>
+      <%= image_tag @user.photo, alt: "User Photo" %>
+    <% else %>
+      <span>No photo</span>
+    <% end %>
+  </div>
+  <div class="user-details">
+    <h2 class="user-name"><%= @user.name %></h2>
+    <p class="user-post-count">Number of posts: <%= @user.post_counter %></p>
+  </div>
+</div>
+
+  <ul>
+    <% @user.posts.each do |post| %>
+      <a href="<%= user_post_path(@user, post) %>">
+      <li>
+        <div class="post">
+          <h4><%= post.title %></h4>
+          <p><%= post.text.truncate_words(80) %></p>
+         
+
+          <div class="comments-container">
+            <% post.comments.each do |comment| %>
+               <p><%= comment.author.name %>: <%= comment.text %></p>
+            <% end %>
+          </div>
+
+        </div>
+        
+      </li>
+    </a>
+  <% end %>
+  </ul>
+  </div>
