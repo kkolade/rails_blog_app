@@ -73,12 +73,10 @@ a {
 }
 
 .button {
-  padding-left: auto;
-  padding-right: auto;
   text-align: center;
 }
 
-.button a{
+.button a {
   display: inline-block;
   border: 1px solid #d0d0d0;
   padding: 8px 16px;
