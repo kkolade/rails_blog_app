@@ -2,36 +2,39 @@
   <div class="user-container">
   <div class="user-photo">
     <% if @user.photo.present? %>
-      <%= image_tag @user.photo, alt: "User Photo" %>
+      <%= image_tag @user.photo, alt: "User Photo", class: "photo" %>
     <% else %>
       <span>No photo</span>
     <% end %>
   </div>
   <div class="user-details">
     <h2 class="user-name"><%= @user.name %></h2>
-    <p class="user-post-count">Number of posts: <%= @user.post_counter %></p>
+    <p class="user-post-count">Number of posts: <%= @user.posts.count %></p>
   </div>
 </div>
-
   <ul>
     <% @user.posts.each do |post| %>
       <a href="<%= user_post_path(@user, post) %>">
-      <li>
-        <div class="post">
-          <h4><%= post.title %></h4>
-          <p><%= post.text.truncate_words(80) %></p>
-         
-
-          <div class="comments-container">
-            <% post.comments.each do |comment| %>
-               <p><%= comment.author.name %>: <%= comment.text %></p>
+        <li>
+          <div class="post">
+            <h3><%= post.title %></h3>
+            <p><%= post.text.truncate_words(80) %></p>    
+            <h4>Comments:</h4>
+            <hr>
+            <% post.last_five_comments.each do |comment| %>
+              <div>
+                <p><%= comment.text %></p>
+                <% if comment.author %>
+                  <p><em>Commented by <%= comment.author.name %></em></p>
+                <% else %>
+                  <p><em>Commented by Unknown User</em></p>
+                <% end %>
+              </div>
             <% end %>
-          </div>
-
-        </div>
-        
-      </li>
-    </a>
-  <% end %>
+          </div>        
+        </li>
+      </a>
+    <% end %>
   </ul>
-  </div>
+</div>
+<div class="button"><a href="">Pagination</a></div>

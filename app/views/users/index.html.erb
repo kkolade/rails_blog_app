@@ -14,7 +14,7 @@
           <%= link_to user_path(user) do %>
             <div>
               <h2 class="user-name"><%= user.name %></h2>
-              <p class="user-post-count">Number of posts: <%= user.post_counter %></p>
+              <p class="user-post-count">Number of posts: <%= user.posts.count %></p>
             </div>
           <% end %>
         </div>

@@ -1,14 +1,22 @@
-<div class="container">
-    <div class="post-container">
-      <h4><%= @post.title %> by <%= @post.author.name %></h4>
-      <p><%= @post.text %></p>
 
-      <div class="comments-container">
-        <% @post.comments.each do |comment| %>
-          <p><%= comment.author.name %>: <%= comment.text %></p>
-        <% end %>
-      </div>
+ <div class="container">  
+  <div class="post-container">
+    <div class="user-details">
+      <h2 class="user-name">Post #<%= @post_number %> by <%= @user.name %></h2>
+      <p class="user-post-count">Number of comments: <%= @post.comments.count %>,
+         Number of likes: <%= @post.likes.count %>
+      </p>
     </div>
-</div>
+    <h4><%= @post.title %> by <%= @post.author.name %></h4>
+    <p><%= @post.text %></p>
+    <div class="comments-container">
+      <h4>Comments:</h4>
+      <% @post.comments.each do |comment| %>
+        <p><%= comment.author.name %>: <%= comment.text %></p>
+      <% end %>
+    </div>
+  </div> 
+</div> 
+
 
 

@@ -44,9 +44,13 @@ a {
 }
 
 .user-photo {
-  width: 120px;
+  width: 150px;
   border: 1px solid #d0d0d0;
   padding: 3px;
+}
+
+.photo {
+  width: 100%;
 }
 
 .user-container a {
@@ -66,4 +70,24 @@ a {
   border: 1px solid #d0d0d0;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+.button {
+  padding-left: auto;
+  padding-right: auto;
+  text-align: center;
+}
+
+.button a{
+  display: inline-block;
+  border: 1px solid #d0d0d0;
+  padding: 8px 16px;
+  margin-right: auto;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.counters {
+  padding-right: 2rem;
+  text-align: right;
 }

@@ -2,14 +2,14 @@
   <div class="user-container">
     <div class = "user-photo">
     <% if @user.photo.present? %>
-      <%= image_tag @user.photo, alt: "User Photo"%>
+      <%= image_tag @user.photo, alt: "User Photo", class: "photo" %>
     <% else %>
       <span>No photo</span>
     <% end %>
     </div>
     <div class="user-details">
       <h2 class="user-name"><%= @user.name %></h2>
-      <p class="user-post-count">Number of posts: <%= @user.post_counter %></p>
+      <p class="user-post-count">Number of posts: <%= @user.posts.count %></p>
     </div>
   </div>
 
@@ -19,17 +19,18 @@
   </div>
 
   <ul>
-    <% @user.posts.limit(3).each do |post| %>
-      <li>
-        <div class="post">
-          <h4><%= post.title %></h4>
-          <p><%= post.text %></p>
-        </div>
-      </li>
-    <% end %>
+   <% @user.last_three_posts.each do |post| %>
+    <li>
+      <div class="post">
+        <h3><%= post.title %></h3>
+        <p><%= post.text.truncate_words(60) %></p>
+        <p class="counters">No of comments: <%= post.comments.count %>,
+          No of likes: <%= post.likes.count %></p>
+      </div>
+    </li>
+  <% end %>
   </ul>
-
-  <div >
+  <div class="button">
     <%= link_to user_posts_path(@user) do %>
       <span>See all posts</span>
     <% end %>
