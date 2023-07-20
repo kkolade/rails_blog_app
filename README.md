@@ -1,5 +1,5 @@
 <!-- TABLE OF CONTENTS -->
-<img width="25%" src=".kolakolade_favicon.png ">
+<img width="25%" src="./kolakolade_favicon.png ">
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
