@@ -10,4 +10,8 @@ class PostsController < ApplicationController
     @posts = @user.posts
     @post_number = @user.posts.order(created_at: :asc).pluck(:id).index(@post.id) + 1
   end
+
+  def new
+    @post = Posts.new
+  end
 end
