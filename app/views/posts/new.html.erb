@@ -1,15 +1,9 @@
-<h1>New Blog Post</h1>
+<div>
+<h2>New Blog Post</h2>
+<div>
+<%= render "shared/form", post: @post %>
+</div>
+<p><%=link_to "Back to Users page", users_path %></p>
+</div>
 
-<%= form_with model: @post, url: new_user_post_path, method: :post, local: true, class: "form" do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
 
-  <div>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </div>
-
-  <%= form.submit "Submit Post" %>
-<% end %>

@@ -1,5 +1,8 @@
 <div class="container">
   <div class="user-container">
+  <div>
+    <%= link_to 'Create a new Post', new_user_post_path %>
+  </div>
   <div class="user-photo">
     <% if @user.photo.present? %>
       <%= image_tag @user.photo, alt: "User Photo", class: "photo" %>
