@@ -4,13 +4,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.new(comment_params)
-    @comment.post_id = params[:post_id]
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
+    @comment = @post.comments.build(comment_params)
+    @comment.author = current_user
 
     if @comment.save
-      redirect_to user_post_path(params[:user_id], params[:post_id])
+      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: "Comment successfully saved."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to user_post_path(params[:user_id], params[:post_id]), alert: "Comment could not be saved."
     end
   end
 
@@ -18,3 +20,9 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:text)
   end
 end
+
+
+
+
+
+

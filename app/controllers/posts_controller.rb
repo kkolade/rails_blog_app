@@ -5,9 +5,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
-    @posts = @user.posts
+    @user = current_user
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
     @post_number = @user.posts.order(created_at: :asc).pluck(:id).index(@post.id) + 1
   end
 
