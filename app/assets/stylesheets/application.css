@@ -96,7 +96,7 @@ a {
   text-align: right;
 }
 
-ul a {
+ul a, .go-back a {
   color: #666;
 }
 
@@ -129,4 +129,10 @@ ul a {
   border: 1px solid #444;
   margin-left: auto;
   margin-right: auto;
+}
+
+.like {
+  text-align: right;
+  margin-right: 15px;
+  background-color: transparent;
 }
