@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
     @comment.author = current_user
 
     if @comment.save
-      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: "Comment successfully saved."
+      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: 'Comment successfully saved.'
     else
-      redirect_to user_post_path(params[:user_id], params[:post_id]), alert: "Comment could not be saved."
+      redirect_to user_post_path(params[:user_id], params[:post_id]), alert: 'Comment could not be saved.'
     end
   end
 
@@ -20,9 +20,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:text)
   end
 end
-
-
-
-
-
-
