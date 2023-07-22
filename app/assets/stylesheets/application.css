@@ -53,6 +53,11 @@ a {
   width: 100%;
 }
 
+ul a,
+.go-back a {
+  color: #666;
+}
+
 .user-container a {
   flex: 1;
 }
@@ -72,7 +77,8 @@ a {
   margin-bottom: 20px;
 }
 
-.button, .heading {
+.button,
+.heading {
   text-align: center;
 }
 
@@ -96,11 +102,9 @@ a {
   text-align: right;
 }
 
-ul a, .go-back a {
-  color: #666;
-}
-
-.comment-form, .text-area, .form {
+.comment-form,
+.text-area,
+.form {
   width: 70%;
   margin-left: auto;
   margin-right: auto;

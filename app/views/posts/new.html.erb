@@ -1,9 +1,11 @@
 <div class="container">
-<h2 class="heading">New Blog Post</h2>
-<div>
-<%= render "shared/form", post: @post %>
-</div>
-<p class="go-back"> &larr; <%=link_to "Back to Users page", users_path %></p>
+  <h2 class="heading">New Blog Post</h2>
+  
+  <div>
+    <%= render "shared/form", post: @post %>
+  </div>
+
+  <p class="go-back"> &larr; <%=link_to "Back to Users page", users_path %></p>
 </div>
 
 
