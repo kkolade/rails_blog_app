@@ -4,15 +4,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
+    # @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
-    @comment.author = current_user
+    @comment.author = @user
 
     if @comment.save
-      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: 'Comment successfully saved.'
+      flash[:notice] = "Comment successfully saved."
+      redirect_to user_post_path(params[:user_id], params[:post_id])
     else
-      redirect_to user_post_path(params[:user_id], params[:post_id]), alert: 'Comment could not be saved.'
+      flash[:notice] = "Comment not saved."
+      redirect_to user_post_path(params[:user_id], params[:post_id])
     end
   end
 
