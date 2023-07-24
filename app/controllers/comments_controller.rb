@@ -10,13 +10,12 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.author = @user
 
-    if @comment.save
-      flash[:notice] = "Comment successfully saved."
-      redirect_to user_post_path(params[:user_id], params[:post_id])
-    else
-      flash[:notice] = "Comment not saved."
-      redirect_to user_post_path(params[:user_id], params[:post_id])
-    end
+    flash[:notice] = if @comment.save
+                       'Comment successfully saved.'
+                     else
+                       'Comment not saved.'
+                     end
+    redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 
   def comment_params

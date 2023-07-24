@@ -1,13 +1,13 @@
 class LikesController < ApplicationController
   def create
-    @user = current_user
-    @post = @user.posts.find(params[:post_id])
-    @like = Like.new(user_id: current_user.id, post: @post)
+    @like = Like.new
+    @like.author = current_user
+    @like.post = Post.find(params[:post_id])
 
     if @like.save
-      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: 'like successfully saved.'
+      redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id])
     else
-      redirect_to user_post_path(params[:user_id], params[:post_id]), alert: 'like could not be saved.'
+      render :new, status: :unprocessable_entity
     end
   end
 end

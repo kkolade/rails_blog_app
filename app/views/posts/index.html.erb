@@ -1,4 +1,11 @@
 <div class="container">
+    <div class="flash-messages">
+      <% if flash[:notice] %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>  
+    </div>
   <div class="new-post button">
     <%= link_to 'Create a new Post', new_user_post_path %>
   </div>
