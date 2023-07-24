@@ -151,10 +151,12 @@ ul a,
   background-color: #f08080;
 }
 
+.notice {
+  background-color: #4dc5ea;
+}
+
 .success {
   background-color: #6aeda1;
 }
 
-.notice {
-  background-color: #4dc5ea;
-}
+

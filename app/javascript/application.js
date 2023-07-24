@@ -3,32 +3,20 @@ import '@hotwired/turbo-rails';
 import 'controllers';
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Function to fade out an element
   function fadeOut(element) {
+    element.style.transition = 'opacity 0.5s';
     element.style.opacity = 1;
 
-    (function fade() {
-      if ((element.style.opacity -= 0.1) < 0) {
+    setTimeout(function () {
+      element.style.opacity = 0;
+      setTimeout(function () {
         element.style.display = 'none';
-      } else {
-        requestAnimationFrame(fade);
-      }
-    })();
+      }, 500);
+    }, 3000);
   }
 
-  // Automatically fade out flash messages after 3 seconds
-  const flashMessages = document.querySelectorAll('.flash-messages');
+  const flashMessages = document.querySelectorAll('.flash');
   flashMessages.forEach(function (message) {
-    message.style.display = 'block';
-    setTimeout(function () {
-      fadeOut(message);
-    }, 3000);
+    fadeOut(message);
   });
 });
-
-
-
-
-
-
-
