@@ -17,9 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Automatically fade out flash messages after 3 seconds
-  const flashMessages = document.querySelectorAll(
-    '.flash-messages .notice, .flash-messages .alert'
-  );
+  const flashMessages = document.querySelectorAll('.flash-messages');
   flashMessages.forEach(function (message) {
     message.style.display = 'block';
     setTimeout(function () {

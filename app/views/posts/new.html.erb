@@ -1,11 +1,12 @@
 <div class="container">
-  <div class="flash-messages">
-  <% if flash[:alert] %>
-    <div class="alert">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-</div>
+  <div class="flash-messages error">
+    <% if flash[:alert] %>
+      <div class="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+
   <h2 class="heading">New Blog Post</h2>
   
   <div>

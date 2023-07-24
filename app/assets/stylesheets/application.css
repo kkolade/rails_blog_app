@@ -140,3 +140,21 @@ ul a,
   margin-right: 15px;
   background-color: transparent;
 }
+
+.flash-messages {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.error {
+  background-color: #f08080;
+}
+
+.success {
+  background-color: #6aeda1;
+}
+
+.notice {
+  background-color: #4dc5ea;
+}
