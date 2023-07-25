@@ -1,5 +1,13 @@
+<div class="container">
+<!-- app/views/layouts/application.html.erb -->
+  <div class="flash-messages notice">
+    <% if flash[:notice] %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+  </div>
 
- <div class="container">  
   <div class="post-container">
     <div class="user-details">
       <h2 class="user-name">Post #<%= @post_number %> by <%= @user.name %></h2>
@@ -7,16 +15,23 @@
          Number of likes: <%= @post.likes.count %>
       </p>
     </div>
+    
     <h4><%= @post.title %> by <%= @post.author.name %></h4>
+
+    <div class="like">
+      <%= form_with model: @like, url: user_post_likes_path(user_id: @post.author.id, post_id: @post.id), local: true do |form| %>
+        <%= form.submit "Like", class: "like" %>
+      <% end %>
+    </div>
+
     <p><%= @post.text %></p>
     <div class="comments-container">
       <h4>Comments:</h4>
+      <%= render "shared/comment_form", comment: @comment %>
+      
       <% @post.comments.each do |comment| %>
         <p><%= comment.author.name %>: <%= comment.text %></p>
       <% end %>
     </div>
   </div> 
-</div> 
-
-
-
+</div>

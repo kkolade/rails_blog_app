@@ -53,6 +53,11 @@ a {
   width: 100%;
 }
 
+ul a,
+.go-back a {
+  color: #666;
+}
+
 .user-container a {
   flex: 1;
 }
@@ -72,7 +77,8 @@ a {
   margin-bottom: 20px;
 }
 
-.button {
+.button,
+.heading {
   text-align: center;
 }
 
@@ -83,9 +89,72 @@ a {
   margin-right: auto;
   margin-left: auto;
   cursor: pointer;
+  color: #666;
+}
+
+.new-post {
+  text-align-last: left;
+  margin-bottom: 10px;
 }
 
 .counters {
   padding-right: 2rem;
   text-align: right;
+}
+
+.comment-form,
+.text-area,
+.form {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-area {
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.form-text {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-text-area {
+  height: 200px;
+}
+
+.comment-button {
+  display: block;
+  background-color: transparent;
+  padding: 7px 15px;
+  border: 1px solid #444;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.like {
+  text-align: right;
+  margin-right: 15px;
+  background-color: transparent;
+}
+
+.flash-messages {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.error {
+  background-color: #f08080;
+}
+
+.notice {
+  background-color: #4dc5ea;
+}
+
+.success {
+  background-color: #6aeda1;
 }

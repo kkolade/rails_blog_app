@@ -1,17 +1,27 @@
 <div class="container">
+    <div class="flash-messages success">
+      <% if flash[:notice] %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>  
+    </div>
+  <div class="new-post button">
+    <%= link_to 'Create a new Post', new_user_post_path %>
+  </div>
   <div class="user-container">
-  <div class="user-photo">
-    <% if @user.photo.present? %>
-      <%= image_tag @user.photo, alt: "User Photo", class: "photo" %>
-    <% else %>
-      <span>No photo</span>
-    <% end %>
+    <div class="user-photo">
+      <% if @user.photo.present? %>
+        <%= image_tag @user.photo, alt: "User Photo", class: "photo" %>
+      <% else %>
+        <span>No photo</span>
+      <% end %>
+    </div>
+    <div class="user-details">
+      <h2 class="user-name"><%= @user.name %></h2>
+      <p class="user-post-count">Number of posts: <%= @user.posts.count %></p>
+    </div>
   </div>
-  <div class="user-details">
-    <h2 class="user-name"><%= @user.name %></h2>
-    <p class="user-post-count">Number of posts: <%= @user.posts.count %></p>
-  </div>
-</div>
   <ul>
     <% @user.posts.each do |post| %>
       <a href="<%= user_post_path(@user, post) %>">
