@@ -1,1 +1,5 @@
-<!-- Empty template, nothing to show -->
+<div class="container">
+  <h2 class="heading">New Comment</h2>
+
+  <%= render partial: "shared/comment_form", locals: { comment: @comment } %>
+</div>

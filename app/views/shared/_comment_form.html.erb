@@ -1,0 +1,10 @@
+<div class="comment-form">
+        <%= form_with model: [@user, @post, @comment], url: user_post_comments_path(@user, @post), class: "form", local: true do |form| %>
+          <div>
+            <%= form.text_area :text, class: "text-area", placeholder: "Add a comment..." %>
+          </div>
+          <div >
+            <%= form.submit "Add Comment", class: "button comment-button" %>
+          </div>
+        <% end %>
+      </div>
