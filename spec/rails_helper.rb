@@ -73,9 +73,21 @@ RSpec.configure do |config|
 end
 
 # Added for Capybara
+# RSpec.configure do |config|
+#   config.include Capybara::DSL
+#   config.before(:each, type: :system) do
+#     driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+#   end
+# end
+
+Capybara.register_driver :selenium_chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new(binary: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.before(:each, type: :system) do
-    driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+    driven_by :selenium_chrome, screen_size: [1400, 1400]
   end
 end
