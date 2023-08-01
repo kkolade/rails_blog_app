@@ -55,6 +55,8 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'webdrivers'
 end
 
 # Add gem for Rubocop

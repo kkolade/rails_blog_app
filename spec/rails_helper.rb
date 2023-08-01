@@ -5,6 +5,7 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -68,5 +69,13 @@ RSpec.configure do |config|
       with.test_framework :rspec
       with.library :rails
     end
+  end
+end
+
+# Added for Capybara
+RSpec.configure do |config|
+  config.include Capybara::DSL
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
   end
 end
