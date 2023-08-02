@@ -59,6 +59,10 @@ group :development, :test do
   gem 'webdrivers'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 # Add gem for Rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
