@@ -29,7 +29,7 @@
           <div class="post">
             <h3><%= post.title %></h3>
             <p><%= post.text.truncate_words(80) %></p>    
-            <h4>Comments:</h4>
+            <h4>Comments (<%=post.comments.count%>), Likes: <%=post.likes.count%> :</h4>
             <hr>
             <% post.last_five_comments.each do |comment| %>
               <div>
