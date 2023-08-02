@@ -4,7 +4,7 @@ require 'capybara/rspec'
 RSpec.describe 'Post show page', type: :system do
   let!(:user) { User.create(name: 'Test User') }
   let!(:post) { user.posts.create(title: 'Post Title', text: 'Post Text') }
-
+  
   before do
     visit user_post_path(user, post)
   end
@@ -48,9 +48,11 @@ RSpec.describe 'Post show page', type: :system do
   end
 
   it 'can submit a new comment' do
-    expect(page).to have_field('Comment', type: 'textarea')
-    fill_in 'Comment', with: 'This is a new comment'
-    click_button 'Add Comment'
+    within '.comment-form' do
+      fill_in 'Add a comment...', with: 'This is a new comment'
+      click_button 'Add Comment'
+    end
+  
     expect(page).to have_content('This is a new comment')
   end
 end
