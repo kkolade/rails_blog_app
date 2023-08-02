@@ -5,11 +5,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @post = Post.find(params[:id])
-    @comments = @post.comments
+    @post = Post.includes(:comments, comments: [:author]).find_by(id: params[:id])
     @comment = Comment.new
-    @post_ids = @user.posts.order(created_at: :asc).pluck(:id)
+    @post_ids = current_user.posts.order(created_at: :asc).pluck(:id)
     @post_index = @post_ids.index(@post.id)
 
     if @post_index
