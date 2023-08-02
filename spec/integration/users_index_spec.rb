@@ -3,7 +3,6 @@ require 'capybara/rspec'
 
 RSpec.describe 'Users index page', type: :feature do
   before do
-    # Create some sample users with posts for testing
     @user1 = User.create(name: 'User 1', posts_counter: 3)
     @user2 = User.create(name: 'User 2', posts_counter: 5)
     @user3 = User.create(name: 'User 3', posts_counter: 2)
