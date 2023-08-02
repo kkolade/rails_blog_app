@@ -8,7 +8,7 @@ RSpec.describe 'Users index page', type: :feature do
     @user2 = User.create(name: 'User 2', posts_counter: 5)
     @user3 = User.create(name: 'User 3', posts_counter: 2)
   end
-  
+
   describe 'when visiting the index page' do
     before { visit users_path }
 

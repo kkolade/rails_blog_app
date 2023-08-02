@@ -74,11 +74,11 @@ RSpec.configure do |config|
 end
 
 Capybara.register_driver :selenium_chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new(binary: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  options = Selenium::WebDriver::Chrome::Options.new(
+    binary: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+  )
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
 end
-
-
 
 RSpec.configure do |config|
   # Added for DatabaseCleaner

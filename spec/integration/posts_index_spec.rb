@@ -6,7 +6,7 @@ RSpec.describe 'User post index page', type: :system do
   let!(:post1) { user.posts.create(title: 'Post 1 Title', text: 'Post 1 Text') }
   let!(:post2) { user.posts.create(title: 'Post 2 Title', text: 'Post 2 Text') }
   let!(:comment) { Comment.new(text: 'comment on post', author: user, post: post1) }
-  let!(:comment2) { Comment.new(text: 'comment on post', author: user, post:post1) }
+  let!(:comment2) { Comment.new(text: 'comment on post', author: user, post: post1) }
 
   before do
     comment.save!
@@ -35,7 +35,6 @@ RSpec.describe 'User post index page', type: :system do
     expect(page).to have_content(comment.text)
     expect(page).to have_content(comment2.text)
   end
-
 
   it 'displays the number of likes a post has' do
     expect(page).to have_content("Likes: #{post1.likes.count}")

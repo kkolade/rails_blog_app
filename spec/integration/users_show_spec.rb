@@ -34,7 +34,7 @@ RSpec.describe 'User show page', type: :system do
   end
 
   it 'display button to see a user\'s post' do
-    expect(page).to have_link('See all posts', href: user_posts_path(user))  
+    expect(page).to have_link('See all posts', href: user_posts_path(user))
   end
 
   it 'redirects to user\'s posts index page when clicking to see all posts' do
