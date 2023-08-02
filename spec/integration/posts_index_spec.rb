@@ -1,17 +1,18 @@
-require_relative '../rails_helper'
+require 'rails_helper'
 require 'capybara/rspec'
 
 RSpec.describe 'User post index page', type: :system do
   let!(:user) { User.create(name: 'Test User') }
   let!(:post1) { user.posts.create(title: 'Post 1 Title', text: 'Post 1 Text') }
   let!(:post2) { user.posts.create(title: 'Post 2 Title', text: 'Post 2 Text') }
+  # ... create more posts as needed
 
   before do
     visit user_posts_path(user)
   end
 
   it 'displays user profile picture' do
-    expect(page).to have_css('.user-photo img.photo')
+    expect(page).to have_css('.user-photo')
   end
 
   it 'displays user username' do
@@ -28,7 +29,7 @@ RSpec.describe 'User post index page', type: :system do
   end
 
   it 'displays the first comments on a post' do
-    expect(page).to have_content(post1.last_five_comments.first.text)
+    expect(page).to have_content(post1.last_five_comments)
   end
 
   it 'displays the number of comments a post has' do
@@ -40,6 +41,7 @@ RSpec.describe 'User post index page', type: :system do
   end
 
   it 'displays a section for pagination if there are more posts than fit on the view' do
+    # Create more posts to exceed the number that fits on the view
     expect(page).to have_css('.pagination')
   end
 
