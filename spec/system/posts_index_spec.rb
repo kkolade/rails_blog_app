@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 require 'capybara/rspec'
 
 RSpec.describe 'User post index page', type: :system do
