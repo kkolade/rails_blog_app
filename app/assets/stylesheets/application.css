@@ -163,7 +163,7 @@ ul a,
   border: 1px solid #666;
   box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
   width: 40%;
-  margin: 5% auto;
+  margin: 3% auto;
   padding: 30px;
 }
 
@@ -184,4 +184,10 @@ input[type=checkbox] {
 
 .shared {
   font-size: small;
+}
+
+.like {
+  width: fit-content;
+  margin-right: 15px;
+  margin-left: auto;
 }
