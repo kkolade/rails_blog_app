@@ -5,6 +5,8 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rspec'
+require 'database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -68,5 +70,40 @@ RSpec.configure do |config|
       with.test_framework :rspec
       with.library :rails
     end
+  end
+end
+
+Capybara.register_driver :selenium_chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new(
+    binary: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+  )
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
+end
+
+RSpec.configure do |config|
+  # Added for DatabaseCleaner
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :system) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.include Capybara::DSL
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome, screen_size: [1400, 1400]
   end
 end

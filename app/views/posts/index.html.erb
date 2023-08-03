@@ -24,12 +24,12 @@
   </div>
   <ul>
     <% @user.posts.each do |post| %>
-      <a href="<%= user_post_path(@user, post) %>">
         <li>
+      <a href="<%= user_post_path(@user, post) %>">
           <div class="post">
             <h3><%= post.title %></h3>
             <p><%= post.text.truncate_words(80) %></p>    
-            <h4>Comments:</h4>
+            <h4>Comments (<%=post.comments.count%>), Likes: <%=post.likes.count%> :</h4>
             <hr>
             <% post.last_five_comments.each do |comment| %>
               <div>
@@ -42,8 +42,8 @@
               </div>
             <% end %>
           </div>        
-        </li>
       </a>
+        </li>
     <% end %>
   </ul>
 </div>
