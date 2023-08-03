@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   root to: redirect('/users/sign_in')
 
-  resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show, :new, :create] do
-      resources :comments, only: [:new, :create]
+  resources :users, only: %i[index show] do
+    resources :posts, only: %i[index show new create] do
+      resources :comments, only: %i[new create]
       resources :likes, only: [:create]
     end
   end
