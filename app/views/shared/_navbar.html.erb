@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <% if user_signed_in? %> 
+  <h1><%= link_to "Home", root_path %></h1>
+  <div class="navbar-user"> 
+    <span class="user">Loggen in as <%= current_user.email %></span>
+    <span> <%= button_to "Sign out", destroy_user_session_path, method: :delete %> </span>
+   <% end %>
+  </div>
+</nav>
