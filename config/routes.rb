@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'likes/create'
-  get 'comments/new'
-  get 'comments/create'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
   
-  root "users#index"
+  authenticated :user do
+    root to: 'users#index', as: :authenticated_root
+  end
+
+  root to: redirect('/users/sign_in')
 
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :new, :create] do
