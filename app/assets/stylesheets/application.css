@@ -144,6 +144,8 @@ ul a,
   text-align: right;
   margin-right: 15px;
   background-color: transparent;
+  width: fit-content;
+  margin-left: auto;
 }
 
 .flash-messages {
@@ -189,17 +191,6 @@ input[type=checkbox] {
 
 .shared {
   font-size: small;
-}
-
-.like {
-  width: fit-content;
-  margin-right: 15px;
-  margin-left: auto;
-}
-.like {
-  width: fit-content;
-  margin-right: 15px;
-  margin-left: auto;
 }
 
 .navbar {
