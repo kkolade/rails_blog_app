@@ -19,6 +19,11 @@
   font-family: sans-serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -139,6 +144,8 @@ ul a,
   text-align: right;
   margin-right: 15px;
   background-color: transparent;
+  width: fit-content;
+  margin-left: auto;
 }
 
 .flash-messages {
@@ -157,4 +164,54 @@ ul a,
 
 .success {
   background-color: #6aeda1;
+}
+
+.login-container {
+  border: 1px solid #666;
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+  width: 40%;
+  margin: 3% auto;
+  padding: 30px;
+}
+
+input {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.action {
+  width: 100%;
+}
+
+input[type=checkbox] {
+  width: auto;
+}
+
+.shared {
+  font-size: small;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  background-color: #ebeaea;
+}
+
+.navbar a {
+  color: #666;
+}
+
+.navbar-user {
+  display: flex;
+  gap: 20px;
+}
+
+.user {
+  font-size: small;
 }
