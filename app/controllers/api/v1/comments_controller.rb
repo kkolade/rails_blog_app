@@ -8,8 +8,8 @@ class Api::V1::CommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     user = User.find_by(email: params[:email]) # Assuming you pass user's email in the request
-    comment = post.comments.new(user: user, content: params[:content])
-    
+    comment = post.comments.new(user:, content: params[:content])
+
     if comment.save
       render json: comment, status: :created
     else
